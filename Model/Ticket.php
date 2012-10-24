@@ -1,4 +1,7 @@
 <?php
+
+App::uses('AppModel', 'Model');
+
 class Ticket extends AppModel {
 /**
  * Name

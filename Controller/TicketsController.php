@@ -1,4 +1,6 @@
 <?php
+App::uses('AppController', 'Controller');
+
 class TicketsController extends AppController {
 /**
  * Name
@@ -7,7 +9,7 @@ class TicketsController extends AppController {
  */
 	public $name = 'Tickets';
 
-	public $components = array('Search.Prg');
+	public $components = array('Search.Prg', 'Paginator');
 	
 /**
  * Fields to preset in search forms.
@@ -38,9 +40,10 @@ class TicketsController extends AppController {
 	
 	public function index() {
 		$this->Prg->commonProcess();
-		$this->paginate = array( 
+		$this->Paginator->settings = array(
+             'limit' => 1,
 			'conditions' => $this->Ticket->parseCriteria($this->passedArgs));
-		$this->set('tickets', $this->paginate());
+		$this->set('tickets', $this->Paginator->paginate());
 	}
 
 	public function view($id = null) {
