@@ -1,7 +1,7 @@
 <h2>Sweet, "Sample-Search-Application" got Baked by CakePHP!</h2>
 
 <?php
-if (Configure::read() > 0):
+if (Configure::read('debug') > 0):
 	Debugger::checkSecurityKeys();
 endif;
 ?>
@@ -23,7 +23,7 @@ endif;
 	$settings = Cache::settings();
 	if (!empty($settings)):
 		echo '<span class="notice success">';
-				printf(__('The %s is being used for caching. To change the config edit APP/config/core.php ', true), '<em>'. $settings['engine'] . 'Engine</em>');
+				printf(__('The %s is being used for caching. To change the config edit APP/config/core.php '), '<em>'. $settings['engine'] . 'Engine</em>');
 		echo '</span>';
 	else:
 		echo '<span class="notice">';
@@ -35,7 +35,7 @@ endif;
 <p>
 <?php
 	$filePresent = null;
-	if (file_exists(CONFIGS . 'database.php')):
+	if (file_exists(APP . 'Config' . DS . 'database.php')):
 		echo '<span class="notice success">';
 			__('Your database configuration file is present.');
 			$filePresent = true;
@@ -52,7 +52,7 @@ endif;
 <?php
 if (!empty($filePresent)):
 	if (!class_exists('ConnectionManager')) {
-		require LIBS . 'model' . DS . 'connection_manager.php';
+		require CAKE . 'model' . DS . 'connection_manager.php';
 	}
 	$db = ConnectionManager::getInstance();
  	$connected = $db->getDataSource('default');
@@ -71,7 +71,7 @@ if (!empty($filePresent)):
 ?>
 </p>
 <?php endif;?>
-<h3><?php __('Editing this Page') ?></h3>
+<h3><?php echo __('Editing this Page') ?></h3>
 <p>
 <?php
 	printf(__('To change the content of this page, edit: %s

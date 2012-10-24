@@ -53,13 +53,13 @@ class Ticket extends AppModel {
  */
 	public function __construct($id = false, $table = null, $ds = null) {
 		$this->statuses = array(
-			'open' => __('Open', true),
-			'closed' => __('Closed', true));
+			'open' => __('Open'),
+			'closed' => __('Closed'));
 		$this->categories = array(
-			'bug' => __('Bug', true),
-			'support' => __('Support', true),
-			'technical' => __('Technical', true),
-			'other' => __('Other', true));
+			'bug' => __('Bug'),
+			'support' => __('Support'),
+			'technical' => __('Technical'),
+			'other' => __('Other'));
 		parent::__construct($id, $table, $ds);
 	}
 	

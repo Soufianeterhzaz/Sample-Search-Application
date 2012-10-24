@@ -10,7 +10,7 @@ class TestTicketsController extends TicketsController {
 	}
 }
 
-class TicketsControllerTestCase extends CakeTestCase {
+class TicketsControllerTest extends CakeTestCase {
 	var $fixtures = array('app.ticket');
 
 	function startTest() {
