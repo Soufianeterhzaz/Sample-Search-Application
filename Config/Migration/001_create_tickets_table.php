@@ -81,4 +81,3 @@ class M4d3814afd7d44473b3220aa40e7e8ef6 extends CakeMigration {
 		return true;
 	}
 }
-?>
