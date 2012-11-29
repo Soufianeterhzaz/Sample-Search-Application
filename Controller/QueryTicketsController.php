@@ -33,7 +33,7 @@ class QueryTicketsController extends AppController {
 	}
 
 	public function index() {
-		$this->Prg->commonProcess();
+		$this->Prg->commonProcess(null, array('paramType' => 'querystring'));
 		$this->Paginator->settings = array(
 			'paramType' => 'querystring',
 			'limit' => 1,
