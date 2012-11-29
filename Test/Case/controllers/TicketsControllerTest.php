@@ -2,7 +2,7 @@
 App::uses('TicketsController', 'Controller');
 
 class TestTicketsController extends TicketsController {
-	var $autoRender = false;
+	public $autoRender = false;
 
 	function redirect($url, $status = null, $exit = true) {
 		$this->redirectUrl = $url;
@@ -10,7 +10,7 @@ class TestTicketsController extends TicketsController {
 }
 
 class TicketsControllerTest extends CakeTestCase {
-	var $fixtures = array('app.ticket');
+	public $fixtures = array('app.ticket');
 
 	function startTest() {
 		$this->Tickets =& new TestTicketsController();

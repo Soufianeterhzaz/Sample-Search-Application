@@ -4,7 +4,7 @@
 	<div class="filter">
 	<?php
 		echo $this->Form->create('Ticket', array(
-			'url' => array_merge(array('action' => 'index'), $this->params['pass'])
+			'url' => array_merge(array('action' => 'index'), $this->request->params['pass'])
 			));
 		echo $this->Form->input('title', array('div' => false, 'empty' => true));
 		echo $this->Form->input('status', array('div' => false, 'empty' => true));
