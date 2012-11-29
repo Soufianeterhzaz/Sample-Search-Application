@@ -27,4 +27,3 @@ class TicketFixture extends CakeTestFixture {
 		),
 	);
 }
-?>

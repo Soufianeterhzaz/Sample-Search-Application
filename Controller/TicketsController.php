@@ -2,15 +2,9 @@
 App::uses('AppController', 'Controller');
 
 class TicketsController extends AppController {
-/**
- * Name
- *
- * @var string $name
- */
-	public $name = 'Tickets';
 
 	public $components = array('Search.Prg', 'Paginator');
-	
+
 /**
  * Fields to preset in search forms.
  *
@@ -26,7 +20,7 @@ class TicketsController extends AppController {
 /**
  * Before filter callback
  * Pass the correct Game data to the view where needed
- * 
+ *
  * @return void
  * @access public
  */
@@ -35,13 +29,11 @@ class TicketsController extends AppController {
 		$this->set('categories', $this->Ticket->categories);
 		parent::beforeFilter();
 	}
-	
-	
-	
+
 	public function index() {
 		$this->Prg->commonProcess();
 		$this->Paginator->settings = array(
-             'limit' => 1,
+			'limit' => 1,
 			'conditions' => $this->Ticket->parseCriteria($this->passedArgs));
 		$this->set('tickets', $this->Paginator->paginate());
 	}
@@ -96,4 +88,5 @@ class TicketsController extends AppController {
 		$this->Session->setFlash(__('Ticket was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
 }

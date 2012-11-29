@@ -44,4 +44,3 @@ class TicketsControllerTest extends CakeTestCase {
 	}
 
 }
-?>

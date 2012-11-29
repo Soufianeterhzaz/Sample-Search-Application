@@ -15,4 +15,3 @@ class TicketTest extends CakeTestCase {
 	}
 
 }
-?>
