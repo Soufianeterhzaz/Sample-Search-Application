@@ -1,6 +1,5 @@
 <?php
-/* Tickets Test cases generated on: 2011-01-20 14:07:08 : 1295521628*/
-App::import('Controller', 'Tickets');
+App::uses('TicketsController', 'Controller');
 
 class TestTicketsController extends TicketsController {
 	var $autoRender = false;
