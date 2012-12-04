@@ -3,18 +3,12 @@
 App::uses('AppModel', 'Model');
 
 class Ticket extends AppModel {
-/**
- * Name
- *
- * @var string $name
- */
-	public $name = 'Ticket';
 
 /**
  * Validation parameters - initialized in constructor
  *
  * @var array
- */ 
+ */
 	public $validate = array(
 		'status' => array(
 			'notempty' => array(
@@ -45,7 +39,7 @@ class Ticket extends AppModel {
 		array('name' => 'title', 'type' => 'query', 'method' => 'filterTitle'),
 		array('name' => 'status', 'type' => 'string'),
 	);
-		
+
 /**
  * Constructor
  *
@@ -65,7 +59,7 @@ class Ticket extends AppModel {
 			'other' => __('Other'));
 		parent::__construct($id, $table, $ds);
 	}
-	
+
 	public function filterTitle($data, $field = null) {
 		if (empty($data['title'])) {
 			return array();
@@ -77,5 +71,5 @@ class Ticket extends AppModel {
 				$this->alias . '.content LIKE' => $title,
 			));
 	}
-	
+
 }

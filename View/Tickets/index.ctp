@@ -1,18 +1,16 @@
 <div class="tickets index">
 	<h2><?php echo __('Tickets');?></h2>
-	
+
 	<div class="filter">
 	<?php
-		echo $this->Form->create('Ticket', array(
-			'url' => array_merge(array('action' => 'index'), $this->params['pass'])
-			));
+		echo $this->Form->create(null);
 		echo $this->Form->input('title', array('div' => false, 'empty' => true));
 		echo $this->Form->input('status', array('div' => false, 'empty' => true));
 		echo $this->Form->submit(__('Search'), array('div' => false));
 		echo $this->Form->end();
 	?>
-	</div>	
-	
+	</div>
+
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('status');?></th>

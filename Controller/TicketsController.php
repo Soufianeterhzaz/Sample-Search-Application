@@ -2,15 +2,9 @@
 App::uses('AppController', 'Controller');
 
 class TicketsController extends AppController {
-/**
- * Name
- *
- * @var string $name
- */
-	public $name = 'Tickets';
 
 	public $components = array('Search.Prg', 'Paginator');
-	
+
 /**
  * Fields to preset in search forms.
  *
@@ -26,7 +20,7 @@ class TicketsController extends AppController {
 /**
  * Before filter callback
  * Pass the correct Game data to the view where needed
- * 
+ *
  * @return void
  * @access public
  */
@@ -35,13 +29,11 @@ class TicketsController extends AppController {
 		$this->set('categories', $this->Ticket->categories);
 		parent::beforeFilter();
 	}
-	
-	
-	
+
 	public function index() {
 		$this->Prg->commonProcess();
 		$this->Paginator->settings = array(
-             'limit' => 1,
+			'limit' => 1,
 			'conditions' => $this->Ticket->parseCriteria($this->passedArgs));
 		$this->set('tickets', $this->Paginator->paginate());
 	}
@@ -55,9 +47,9 @@ class TicketsController extends AppController {
 	}
 
 	public function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Ticket->create();
-			if ($this->Ticket->save($this->data)) {
+			if ($this->Ticket->save($this->request->data)) {
 				$this->Session->setFlash(__('The ticket has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -67,20 +59,20 @@ class TicketsController extends AppController {
 	}
 
 	public function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid ticket'));
 			$this->redirect(array('action' => 'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Ticket->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Ticket->save($this->request->data)) {
 				$this->Session->setFlash(__('The ticket has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The ticket could not be saved. Please, try again.'));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Ticket->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Ticket->read(null, $id);
 		}
 	}
 
@@ -96,4 +88,5 @@ class TicketsController extends AppController {
 		$this->Session->setFlash(__('Ticket was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
 }

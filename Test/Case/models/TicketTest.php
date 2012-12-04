@@ -1,9 +1,9 @@
 <?php
 /* Ticket Test cases generated on: 2011-01-20 14:04:55 : 1295521495*/
-App::import('Model', 'Ticket');
+App::uses('Ticket', 'Model');
 
 class TicketTest extends CakeTestCase {
-	var $fixtures = array('app.ticket');
+	public $fixtures = array('app.ticket');
 
 	function startTest() {
 		$this->Ticket =& ClassRegistry::init('Ticket');
@@ -15,4 +15,3 @@ class TicketTest extends CakeTestCase {
 	}
 
 }
-?>

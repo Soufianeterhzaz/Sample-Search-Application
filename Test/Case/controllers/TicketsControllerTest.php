@@ -1,9 +1,8 @@
 <?php
-/* Tickets Test cases generated on: 2011-01-20 14:07:08 : 1295521628*/
-App::import('Controller', 'Tickets');
+App::uses('TicketsController', 'Controller');
 
 class TestTicketsController extends TicketsController {
-	var $autoRender = false;
+	public $autoRender = false;
 
 	function redirect($url, $status = null, $exit = true) {
 		$this->redirectUrl = $url;
@@ -11,7 +10,7 @@ class TestTicketsController extends TicketsController {
 }
 
 class TicketsControllerTest extends CakeTestCase {
-	var $fixtures = array('app.ticket');
+	public $fixtures = array('app.ticket');
 
 	function startTest() {
 		$this->Tickets =& new TestTicketsController();
@@ -44,4 +43,3 @@ class TicketsControllerTest extends CakeTestCase {
 	}
 
 }
-?>

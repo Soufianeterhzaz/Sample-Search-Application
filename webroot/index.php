@@ -24,6 +24,7 @@
 if (!defined('DS')) {
 	define('DS', DIRECTORY_SEPARATOR);
 }
+
 /**
  * These defines should only be edited if you have cake installed in
  * a directory layout other than the way it is distributed.
@@ -37,6 +38,7 @@ if (!defined('DS')) {
 if (!defined('ROOT')) {
 	define('ROOT', dirname(dirname(dirname(__FILE__))));
 }
+
 /**
  * The actual directory name for the "app".
  *
@@ -56,7 +58,7 @@ if (!defined('APP_DIR')) {
  *
  * Leaving this constant undefined will result in it being defined in Cake/bootstrap.php
  */
-	//define('CAKE_CORE_INCLUDE_PATH', ROOT . DS . 'lib');
+//define('CAKE_CORE_INCLUDE_PATH', __CAKE_PATH__);
 
 /**
  * Editing below this line should NOT be necessary.
@@ -79,11 +81,11 @@ if (!defined('CAKE_CORE_INCLUDE_PATH')) {
 	if (function_exists('ini_set')) {
 		ini_set('include_path', ROOT . DS . 'lib' . PATH_SEPARATOR . ini_get('include_path'));
 	}
-	if (!include ('Cake' . DS . 'bootstrap.php')) {
+	if (!include 'Cake' . DS . 'bootstrap.php') {
 		$failed = true;
 	}
 } else {
-	if (!include (CAKE_CORE_INCLUDE_PATH . DS . 'Cake' . DS . 'bootstrap.php')) {
+	if (!include CAKE_CORE_INCLUDE_PATH . DS . 'Cake' . DS . 'bootstrap.php') {
 		$failed = true;
 	}
 }
@@ -94,4 +96,7 @@ if (!empty($failed)) {
 App::uses('Dispatcher', 'Routing');
 
 $Dispatcher = new Dispatcher();
-$Dispatcher->dispatch(new CakeRequest(), new CakeResponse());
+$Dispatcher->dispatch(
+	new CakeRequest(),
+	new CakeResponse()
+);
